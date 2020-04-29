@@ -1,0 +1,22 @@
+<div class="recipe-list-container">
+  <div class="left-panel">
+    <input [(ngModel)]="searchText" placeholder="Search for a recipe" />
+    <button class="add-recipe-button" routerLink="/recipes/create">
+      Add recipe
+    </button>
+  </div>
+  <div class="right-panel">
+    <div
+      *ngFor="let recipe of recipes | filter: searchText"
+      class="recipe-box-container"
+    >
+      <div class="recipe-box" [routerLink]="['/recipes', recipe._id]">
+        <img
+          [src]="'http://localhost:3000/uploads/' + recipe.picture.filename"
+          alt="picture"
+        />
+        <p>{{ recipe.title }}</p>
+      </div>
+    </div>
+  </div>
+</div>

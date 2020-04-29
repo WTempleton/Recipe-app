@@ -1,0 +1,38 @@
+<div *ngFor="let recipe of recipes">
+  <div class="recipe-detail-container">
+    <img
+      [src]="'http://localhost:3000/uploads/' + recipe.picture.filename"
+      alt="picture"
+    />
+    <div class="recipe-detail-text">
+      <h4>{{ recipe.title }}</h4>
+      <div class="recipe-detail-inline">
+        <p>Time: {{ recipe.time }}</p>
+        <p>|</p>
+        <p>Serves: {{ recipe.servings }}</p>
+      </div>
+      <div class="recipe-detail-columns">
+        <div class="ingredients-column">
+          <h5>Ingredients</h5>
+          <p>{{ recipe.ingredients }}</p>
+        </div>
+        <div class="directions-column">
+          <h5>Directions</h5>
+          <p>{{ recipe.directions }}</p>
+        </div>
+      </div>
+      <div class="recipe-list-buttons">
+        <button
+          class="change-recipe"
+          [routerLink]="['/recipes/change', recipe._id]"
+        >
+          Update recipe
+        </button>
+        <button class="delete-button" (click)="removeRecipe()">Delete</button>
+        <button class="back-button" routerLink="/recipes">
+          Go back to recipes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

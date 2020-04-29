@@ -1,0 +1,70 @@
+<div *ngFor="let recipe of recipes">
+  <!--Not great but enables loading of {{recipe}}-->
+  <form enctype="multipart/form-data" class="form">
+    <div class="recipe-config">
+      <label for="recipe-name">Recipe name:</label>
+      <input
+        #nameInput
+        type="text"
+        id="recipe-name"
+        value="{{ recipe.title }}"
+      />
+      <label for="preparation-time">Preparation time:</label>
+      <input
+        #timeInput
+        type="text"
+        id="preparation-time"
+        value="{{ recipe.time }}"
+      />
+      <label for="servings">Serves:</label>
+      <input
+        #servingsInput
+        type="text"
+        id="servings"
+        value="{{ recipe.servings }}"
+      />
+      <label for="ingredients">Ingredients</label>
+      <textarea
+        #ingredientsInput
+        type="text"
+        id="ingredients"
+        value="{{ recipe.ingredients }}"
+        class="large-text-area"
+      ></textarea>
+      <label for="directions">Directions</label>
+      <textarea
+        #directionsInput
+        type="text"
+        id="directions"
+        value="{{ recipe.directions }}"
+        class="large-text-area"
+      ></textarea>
+      <label for="recipe-picture">Add a picture of the recipe</label>
+      <input
+        type="file"
+        id="recipe-picture"
+        accept="image/png, image/jpeg, image/jpg"
+        name="imageInput"
+        (change)="selectImage($event)"
+      />
+      <p>Don't leave any empty fields!</p>
+      <div class="form-buttons">
+        <input
+          class="submit-button"
+          type="submit"
+          value="Store recipe"
+          (click)="
+            addOrChangeRecipe(
+              nameInput.value,
+              servingsInput.value,
+              timeInput.value,
+              ingredientsInput.value,
+              directionsInput.value
+            )
+          "
+        />
+        <button class="cancel-button" routerLink="/recipes">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
