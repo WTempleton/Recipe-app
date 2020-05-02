@@ -12,7 +12,7 @@
     >
       <div class="recipe-box" [routerLink]="['/recipes', recipe._id]">
         <img
-          [src]="'http://localhost:3000/uploads/' + recipe.picture.filename"
+          [src]="'../uploads/' + recipe.picture.filename"
           alt="picture"
         />
         <p>{{ recipe.title }}</p>

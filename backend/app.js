@@ -9,6 +9,11 @@ const upload = multer({ dest: "./public/uploads/" });
 app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
+app.use("/", express.static("public/frontend"));
+
+app.get("/static/index.html", (req, res) => {
+  res.send();
+});
 
 /* GET ALL recipes */
 app.get("/recipes", (req, res) => {

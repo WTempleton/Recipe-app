@@ -1,7 +1,7 @@
 <div *ngFor="let recipe of recipes">
   <div class="recipe-detail-container">
     <img
-      [src]="'http://localhost:3000/uploads/' + recipe.picture.filename"
+      [src]="'../uploads/' + recipe.picture.filename"
       alt="picture"
     />
     <div class="recipe-detail-text">
